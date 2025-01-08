@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Row, Col, Typography, Layout } from 'antd';
+import { Card, Row, Col, Typography, Layout, Button } from 'antd';
 import {
   PlusCircleOutlined,
   ShoppingCartOutlined,
@@ -12,29 +12,35 @@ import {
   AlertOutlined,
   TeamOutlined
 } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
 const DashboardScreen = () => {
+    const navigate = useNavigate();
   const menuItems = [
     {
       title: 'Ürün Ekle',
       icon: <PlusCircleOutlined style={{ fontSize: '32px' }} />,
       description: 'Yeni ürün ekleme ve düzenleme',
-      color: '#1890ff'
+      color: '#1890ff',
+      route: '/urun-ekle',
     },
     {
       title: 'Stok İşlemleri',
       icon: <ShoppingCartOutlined style={{ fontSize: '32px' }} />,
       description: 'Stok giriş ve çıkış işlemleri',
-      color: '#52c41a'
+      color: '#52c41a',
+      route: '/stok-islemleri',
     },
     {
       title: 'Satış Ekranı',
       icon: <DollarOutlined style={{ fontSize: '32px' }} />,
       description: 'Hızlı satış işlemleri',
-      color: '#722ed1'
+      color: '#722ed1',
+      route: '/satis',
+
     },
     {
       title: 'Raporlar',
@@ -80,6 +86,11 @@ const DashboardScreen = () => {
     }
   ];
 
+  const handleCardClick = (route) => {
+    navigate(route);
+  };
+
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ background: '#fff', padding: '0 24px' }}>
@@ -96,7 +107,7 @@ const DashboardScreen = () => {
                   textAlign: 'center',
                   cursor: 'pointer'
                 }}
-                onClick={() => console.log(`Clicked: ${item.title}`)}
+                onClick={() => handleCardClick(item.route)}
               >
                 <div style={{ color: item.color }}>
                   {item.icon}

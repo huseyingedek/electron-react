@@ -9,7 +9,9 @@ import {
   Card,
   Space,
   Divider,
-  message
+  message,
+  Row,
+  Col
 } from 'antd';
 import {
   UploadOutlined,
@@ -76,7 +78,7 @@ const ProductAddScreen = () => {
           taxRate: 18,
           status: 'active'
         }}
-      >
+      > 
         <div style={{ backgroundColor: '#fafafa', padding: '20px', borderRadius: '6px', marginBottom: '24px' }}>
           <h3>Temel Bilgiler</h3>
           <Divider />
