@@ -36,21 +36,20 @@ const SalesScreen = () => {
   const barcodeInputRef = useRef(null);
   const [form] = Form.useForm();
 
-  // Örnek ürün veritabanı
   const products = {
     '1234': { id: '1234', name: 'Ürün A', price: 100, stock: 50 },
     '5678': { id: '5678', name: 'Ürün B', price: 150, stock: 30 },
     '9012': { id: '9012', name: 'Ürün C', price: 200, stock: 25 },
-    '90212': { id: '9012', name: 'Ürün t', price: 200, stock: 25 },
-    '90512': { id: '9012', name: 'Ürün g', price: 200, stock: 25 },
-    '90412': { id: '9012', name: 'Ürün n', price: 200, stock: 25 },
-    '90132': { id: '9012', name: 'Ürün b', price: 200, stock: 25 },
-    '904412': { id: '9012', name: 'Ürün s', price: 200, stock: 25 },
-    '9012': { id: '9012', name: 'Ürün C', price: 200, stock: 25 },
-    '90212': { id: '9012', name: 'Ürün C', price: 2040, stock: 25 },
-    '9f0e12': { id: '9012', name: 'Ürün C', price: 200, stock: 25 },
-    '90w1r2': { id: '9012', name: 'Ürün C3', price: 200, stock: 25 },
-    '9v012': { id: '9012', name: 'Ürün C', price: 200, stock: 25 },
+    '90212': { id: '903412', name: 'Ürün t', price: 200, stock: 25 },
+    '90512': { id: '90512', name: 'Ürün g', price: 200, stock: 25 },
+    '90412': { id: '96012', name: 'Ürün n', price: 200, stock: 25 },
+    '90132': { id: '90712', name: 'Ürün b', price: 200, stock: 25 },
+    '904412': { id: '906512', name: 'Ürün s', price: 200, stock: 25 },
+    '9012': { id: '904312', name: 'Ürün C', price: 200, stock: 25 },
+    '90212': { id: '905412', name: 'Ürün C', price: 2040, stock: 25 },
+    '9f0e12': { id: '934012', name: 'Ürün C', price: 200, stock: 25 },
+    '90w1r2': { id: '903412', name: 'Ürün C3', price: 200, stock: 25 },
+    '9v012': { id: '901342', name: 'Ürün C', price: 200, stock: 25 },
 
   };
 
@@ -67,7 +66,6 @@ const SalesScreen = () => {
     }
   };
 
-  // Sepete ürün ekleme
   const addToCart = (product) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
@@ -82,12 +80,10 @@ const SalesScreen = () => {
     });
   };
 
-  // Sepetten ürün silme
   const removeFromCart = (productId) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
   };
 
-  // Miktar güncelleme
   const updateQuantity = (productId, quantity) => {
     if (quantity < 1) return;
     setCart(prevCart =>
@@ -99,15 +95,12 @@ const SalesScreen = () => {
     );
   };
 
-  // Toplam tutarı hesaplama
   const calculateTotal = () => {
     return cart.reduce((sum, item) => sum + item.total, 0);
   };
 
-  // Ödeme işlemi
   const handlePayment = (values) => {
     setLoading(true);
-    // Burada ödeme işlemleri yapılacak
     setTimeout(() => {
       message.success('Satış başarıyla tamamlandı');
       setPaymentModal(false);
@@ -164,7 +157,6 @@ const SalesScreen = () => {
   return (
     <div className="p-4">
       <Row gutter={16}>
-        {/* Sol Taraf - Sepet */}
         <Col span={16}>
           <Card>
             <Space direction="vertical" className="w-full">
@@ -179,7 +171,6 @@ const SalesScreen = () => {
                 onKeyPress={handleBarcodeSubmit}
               />
               
-              {/* Ürün Hızlı Seçim */}
               <div className="flex flex-wrap gap-2 my-4">
                 {Object.values(products).map(product => (
                   <Button 
@@ -215,7 +206,6 @@ const SalesScreen = () => {
           </Card>
         </Col>
 
-        {/* Sağ Taraf - İşlem Butonları */}
         <Col span={8}>
           <Card>
             <Space direction="vertical" className="w-full">

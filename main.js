@@ -5,25 +5,25 @@ let win;
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1300,
+    height: 1000,
     webPreferences: {
-      nodeIntegration: false,  // nodeIntegration'ı kapatıyoruz
-      contextIsolation: true,  // contextIsolation'ı açıyoruz
-      preload: path.join(__dirname, 'preload.js'), // preload dosyasını doğru şekilde tanımlıyoruz
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js'),
     },
   });
 
-  win.loadURL('http://localhost:3000'); // React uygulamanız burada çalışıyor
+  win.loadURL('http://localhost:3000');
 
   win.on('closed', () => {
     win = null;
   });
 
-  // IPC ile geri tuşu fonksiyonunu dinleme
+
   ipcMain.handle('go-back', () => {
     if (win.webContents.canGoBack()) {
-      win.webContents.goBack(); // Sayfayı geri al
+      win.webContents.goBack(); 
     } else {
       console.log('No history to go back');
     }
