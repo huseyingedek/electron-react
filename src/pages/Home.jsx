@@ -10,7 +10,8 @@ import {
   DollarOutlined,
   FileTextOutlined,
   AlertOutlined,
-  TeamOutlined
+  TeamOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -46,7 +47,9 @@ const DashboardScreen = () => {
       title: 'Raporlar',
       icon: <BarChartOutlined style={{ fontSize: '32px' }} />,
       description: 'Satış ve stok raporları',
-      color: '#faad14'
+      color: '#faad14',
+      route: '/reports',
+
     },
     {
       title: 'Müşteriler',
@@ -83,6 +86,14 @@ const DashboardScreen = () => {
       icon: <SettingOutlined style={{ fontSize: '32px' }} />,
       description: 'Sistem ayarları',
       color: '#595959'
+    },
+    {
+      title: 'Çıkış',
+      icon: <LogoutOutlined style={{ fontSize: '32px' }} />,
+      description: 'Çıkış yap',
+      color: '#f5222d',
+      route: '/login',
+
     }
   ];
 

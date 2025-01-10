@@ -44,7 +44,6 @@ const StockOperations = () => {
         if (product) {
           form.setFieldsValue({
             product: product.value,
-            quantity: 1
           });
           message.success(`${product.label} bulundu`);
         } else {

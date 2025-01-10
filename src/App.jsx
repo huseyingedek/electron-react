@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import ProductAddScreen from './pages/ProductAddScreen';
 import Stok from './pages/Stok';
 import Sales from './pages/Sales';
+import Reports from './pages/Reports';
 
 
 
@@ -19,6 +20,8 @@ function App() {
           <Route path="/urun-ekle" element={<ProductAddScreen />} />
           <Route path="/stok-islemleri" element={<Stok />} />
           <Route path="/satis" element={<Sales />} />
+          <Route path="/reports" element={<Reports />} />
+
 
         </Routes>
       </div>
